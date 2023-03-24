@@ -20,9 +20,11 @@ def create_module():
     makedirs(module_name)
     chdir(module_name)
     makedirs('specs')
+
     model_file = open(f'{module_name}.model.js', 'w')
     route_file = open(f'{module_name}.routes.js', 'w')
     module_file = open('module.js', 'w')
+    testing_file = open(f'specs/{module_name}.spec.js', 'w')
 
     module_file.write(f"""
 import routes from '../core/routes.js'
@@ -48,7 +50,8 @@ export default (app, abstractRoutes) => {"{"}
 
   return routes;
 {"}"};
-""")   
+""")  
+ 
     model_file.write(f"""
 import mongoose from 'mongoose';
 import abstractModel from '../core/model.js';   
@@ -67,7 +70,19 @@ export default model;
 """)
 
 
-    
+    testing_file.write(f"""
+import testingRoutes from '../../utilsForSpecs/testingRoutes.js';
+import {module_name}Routes from '../{module_name}.routes.js';
+
+describe('Testing {module_name} routes', () => {"{"}
+    const routes = testingRoutes({module_name}Routes);
+
+    it('should return the correct path', () => {"{"}
+        expect(routes.path).toBe('/{endpoint}');
+    {"}"});
+
+{"}"});
+    """)
 
 
 

@@ -4,6 +4,8 @@
 
 availableFiles=()
 
+python3 -m pip install -r ./requirements.txt
+
 for file in *; do
     if [ -f "$file" ]; then
       availableFiles+=("$file")
@@ -18,4 +20,4 @@ for file in "${availableFiles[@]}"; do
   fi
 done
 
-ls "/usr/local/bin"
+echo "Installation successfully 🚀"

@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+import json
+from subprocess import run
+
+def get_parameters():
+  run(['paramsToJson'])
+  print("✨ Loading parameters...")  
+  
+  with open("/tmp/parameters.json", 'r') as file:
+    parameters = json.load(file)
+    print("✔️ Parameters successfully loaded!")
+
+    return parameters
+
+def get_environment(environments: list) -> str:
+  for index, env in enumerate(environments):
+    print(f"{index + 1} - {env}")
+    
+  environment = int(input("Choose an environment: 🌍 ")) - 1 
+  
+  return environments[environment]
+
+def set_value(dictionary, key, new_value):
+    parts = key.split('/')
+    last_level = dictionary
+
+    for i, part in enumerate(parts):
+        if i == len(parts) - 1:
+          last_level[part] = new_value
+        else:
+          last_level = last_level.setdefault(part, {})
+
+def write_params(local_params):
+  with open("./local-params.json", 'w') as local_params_file:
+    json_str = json.dumps(local_params, ensure_ascii=False, indent=2)
+    
+    local_params_file.write(json_str)  
+    print("🚀 Local parameters successfully written!")
+
+    
+params = get_parameters()
+environments = list(params.keys())
+selected_environment = get_environment(environments)
+selected_parameters = params[selected_environment]
+params_keys = list(selected_parameters.keys())
+local_params = {}
+
+for param_key in params_keys:
+  set_value(local_params, param_key, selected_parameters[param_key])
+
+write_params(local_params=local_params)

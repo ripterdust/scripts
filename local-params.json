@@ -1,1 +1,185 @@
-{}
+{
+  "database": {
+    "mockTableName": "mockster"
+  },
+  "smartHome": {
+    "authentication": {
+      "baseUrl": "https://apigw-st.telus.com/st/ci/token"
+    },
+    "profiles": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/profile-management",
+      "tenantBaseUrl": "https://zv5527m698.execute-api.ca-central-1.amazonaws.com/profile-management"
+    },
+    "device": {
+      "baseUrl": "https://apwy3gmbtecmujefaewnkqy7hq0uusnn.lambda-url.ca-central-1.on.aws"
+    },
+    "devicesOnboarding": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/1p-provisioning-service/onboarding"
+    },
+    "deviceAssociation": {
+      "baseUrl": " https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/1p-provisioning-service/association"
+    },
+    "d3p": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/3p-association-and-devices-service/3passociation"
+    },
+    "accessPoint": {
+      "baseUrl": "https://esetabliw5.execute-api.ca-central-1.amazonaws.com/qa"
+    },
+    "userrules": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/rules-engine"
+    },
+    "energy": {
+      "baseUrl": "https://kxfed29lrf.execute-api.ca-central-1.amazonaws.com"
+    },
+    "login": {
+      "baseUrl": "https://tu48z5tk8a.execute-api.ca-central-1.amazonaws.com",
+      "tenantRedirectUri": "https://febe.qa.smarthomeplus.com/callback",
+      "tenantScope": "openid profile 15 130 195 224 386 1746 1894 2160 2305 131 1469 658 3979 3964",
+      "platformScope": "email+openid"
+    },
+    "assetManager": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/asset-management",
+      "baseUrlTenant": "https://zv5527m698.execute-api.ca-central-1.amazonaws.com/asset-management"
+    },
+    "videoManagementgw": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/video-management"
+    },
+    "activityManagement": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/activity-management",
+      "baseUrlTenant": "https://zv5527m698.execute-api.ca-central-1.amazonaws.com/activity-management",
+      "indexAssetStateUpdate": "sh2.iotcloud.assetmanagement-sh2.iotcloud.assetmanagement.assetstateupdate",
+      "indexThermostat": "sh2.platform.energymanagement-sh2.platform.energymanagement.thermostatheatcoolduration",
+      "indexAssetCreated": "sh2.iotcloud.assetmanagement-sh2.iotcloud.assetmanagement.assetcreated",
+      "indexProfileCreated": "sh2.application.profilemanagement-sh2.application.profilemanagement.createprofile",
+      "minutesToSubtract": "5",
+      "indexEnergyChallenge": "sh2.platform.eventmanagement-sh2.application.energymanagement.energychallenge",
+      "indexEnergyReward": "sh2.platform.eventmanagement-sh2.application.energymanagement.reward",
+      "indexCompletedChallenge": "sh2.platform.platformrulesengineservice-sh2.application.energymanagement.challengecomplete"
+    },
+    "eventManagement": {
+      "baseUrl": "https://mesqxohny7.execute-api.ca-central-1.amazonaws.com/event-management",
+      "baseUrlTenant": "https://zv5527m698.execute-api.ca-central-1.amazonaws.com/event-management"
+    },
+    "loginToken": {
+      "tenantScope": "openid profile email",
+      "tenantRedirectUri": "https://febe.qa.smarthomeplus.com/callback",
+      "baseUrl": "https://telusidentity-pp.telus.com",
+      "tenantEnv": "it04",
+      "tokenUrl": "https://apigw-st.telus.com/st/ci/token",
+      "householdId": "01HEV05F8KY76A34WEQCMSDRCX"
+    }
+  },
+  "ohmConnect": {
+    "baseUrl": "https://api.beta.telus.ohmconnect.com/api/v2/telus",
+    "maxBlockSize": "20",
+    "maxBlockSizeDeviceStatus": "50",
+    "maxRequestRetry": "2",
+    "logTable": "febe-ohmconnect-qa-events",
+    "maxBlockSizeScheduler": "10",
+    "thermostatScheduler": "true",
+    "smartPlugScheduler": "false",
+    "minutesforEnergySchedulerBeforeMidnight": "20",
+    "maxBlockSizeHouseholds": "100"
+  },
+  "kong": {
+    "baseUrl": "https://apigw-pr.telus.com",
+    "scope": "openid profile 15 130 195 224 386 1746 1894 2160 2305 131 1469 658 3979 3964 37",
+    "tokenCacheExpiresIn": "290",
+    "cacheExpiresIn": "290",
+    "cacheKey": "kongToken"
+  },
+  "kong_staging": {
+    "baseUrl": "https://apigw-st.telus.com",
+    "scope": "3979 3964 37",
+    "tokenCacheExpiresIn": "290"
+  },
+  "febe": {
+    "mockster": {
+      "baseUrl": "https://bqs80kkt98.execute-api.ca-central-1.amazonaws.com/dev"
+    }
+  },
+  "tenantCustomer": {
+    "baseUrl": "https://phccw87hjl.execute-api.ca-central-1.amazonaws.com/qa"
+  },
+  "cujo": {
+    "tokenCacheExpiresIn": "290"
+  },
+  "cloudCheck": {
+    "tokenCacheExpiresIn": "290"
+  },
+  "internet": {
+    "wifiTenant": {
+      "baseUrl": "https://3fa7w7tgwg.execute-api.ca-central-1.amazonaws.com/qa"
+    },
+    "accessPointTenant": {
+      "baseUrl": "https://u2chi5451d.execute-api.ca-central-1.amazonaws.com/qa"
+    },
+    "customerTenant": {
+      "baseUrl": "https://phccw87hjl.execute-api.ca-central-1.amazonaws.com/qa"
+    },
+    "networkDevicesTenant": {
+      "baseUrl": "https://gianut9r5j.execute-api.ca-central-1.amazonaws.com/qa"
+    }
+  },
+  "assets": {
+    "cdnBaseUrl": "https://d1v8h3z49q1krw.cloudfront.net"
+  },
+  "energy": {
+    "energyAssetTypes": "oic.d.smartPlug",
+    "initialConsumptionDate": "1696118400000",
+    "dashboard": {
+      "groupReporting": "EnergyDevices-",
+      "groupAllDevices": "All-Devices",
+      "averageRangeHigh": "1.05",
+      "averageRangeLow": "0.95"
+    },
+    "optIn": {
+      "EnergyDevicesOptIn": "EnergyDevicesOptIn-",
+      "EnergyDevicesForChallenge": "EnergyDevicesForChallenge-"
+    },
+    "rewardCalculation": {
+      "pointMultiplier": "1000",
+      "useMultiplier": "true",
+      "decimalPlaces": "0"
+    },
+    "enableRewardsbatches": "true",
+    "tenantDefaultConversionRate": "0.01",
+    "disabledMethods": "subscribeHouseholdEvents,unsuscribeHouseholdEvents"
+  },
+  "ossBss": {
+    "profile": {
+      "baseUrl": "https://zv5527m698.execute-api.ca-central-1.amazonaws.com/profile-management"
+    },
+    "baseUrl": "https://obss.qa.smarthomeplus.com/api/v1",
+    "kong": {
+      "baseUrl": "https://apigw-st.telus.com"
+    },
+    "sendKongToken": "enabled",
+    "kongTokenTTL": "30",
+    "scope": "201 130 264"
+  },
+  "hdmCallback": {
+    "pollingInterval": "1000",
+    "timeoutDuration": "60000"
+  },
+  "speedTest": {
+    "pollingInterval": "2000",
+    "timeoutDuration": "45000"
+  },
+  "febeBaseUrl": "https://febe.qa.smarthomeplus.com",
+  "dynamoDb": {
+    "isEnabled": "true",
+    "networkDeviceCacheExpiresIn": "2592000",
+    "isNetworkDeviceCachingEnabled": "false"
+  },
+  "jwksUrl": "https://apigw-st.telus.com/st/ci/jwks",
+  "nodeCache": {
+    "isEnabled": "true"
+  },
+  "env": "qa",
+  "observability": {
+    "logging": {
+      "baseUrl": "https://v7bdfbdp12.execute-api.ca-central-1.amazonaws.com/qa"
+    }
+  }
+}

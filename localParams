@@ -17,7 +17,7 @@ def get_environment(environments: list) -> str:
   for index, env in enumerate(environments):
     print(f"{index + 1} - {env}")
     
-  environment = int(input("Choose an environment: 🌍 ")) - 1 
+  environment = int(input("🌍 Choose an environment: ")) - 1 
   
   return environments[environment]
 
@@ -37,7 +37,6 @@ def write_params(local_params):
     
     local_params_file.write(json_str)  
     print("🚀 Local parameters successfully written!")
-
     
 params = get_parameters()
 environments = list(params.keys())

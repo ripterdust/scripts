@@ -10,7 +10,7 @@ for file in *; do
 done
 
 for file in "${availableFiles[@]}"; do
-  if [ "$file" != "install.sh" ] && [ "$file" != "local-params.json" ]; then
+  if [ "$file" != "install.sh" ] && [ "$file" != "local-params.json" ] && [ "$file" != ".gitignore" ]; then
     echo "hola"
   fi
 done

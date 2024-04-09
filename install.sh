@@ -12,7 +12,7 @@ for file in *; do
 done
 
 for file in "${availableFiles[@]}"; do
-  if [ "$file" != "install.sh" ] && [ "$file" != "local-params.json" ] && [ "$file" != ".gitignore" ]; then
+  if [ "$file" != "install.sh" ] && [ "$file" != "local-params.json" ] && [ "$file" != ".gitignore" ] && [ "$file" != "requirements.txt" ]; then
     sudo cp $file "/usr/local/bin/$file"
     sudo chmod +x "/usr/local/bin/$file"
   fi

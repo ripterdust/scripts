@@ -11,3 +11,4 @@ You can install all the scripts with the next command:
 | **install.sh**   | sudo chmod 777 install.sh && ./install.sh | This script installs all the next scripts in the computer                                          |
 | **localParams**  | localParams                               | This script generate the local-params file. You must be in the febe repo in order to make it work. |
 | **updateBranch** | updateBranch                              | This script basically updates actual branch with master changes.                                   |
+| **krun**         | krun                                      | This script runs ktor project in watch mode                                                        |

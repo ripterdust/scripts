@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Function to search and remove files by extension, excluding specific files
+remove_by_extension(){
+	local pattern="$1"
+	local exclude="$2"
+
+	find . -type f -name "$pattern" ! -name "$exclude" -exec rm -f {} +
+
+	echo "Files with pattern '$pattern' (excluding '$exclude') removed successfully" 
+}
+
+# Remove .d.ts files
+remove_by_extension "*.d.ts" ""
+
+# Remove .js files, excluding jest.config.js
+remove_by_extension "*.js" "jest.config.js"

@@ -35,6 +35,16 @@ if [ -z "$AWS_ACCESS_KEY_ID" ]; then
   exit 1
 fi
 
+if [ -z "$MEMBER_IDP_CLIENT_SECRET " ]; then
+  echo -e "\e[31m💀 ***Please paste MEMBER_IDP_CLIENT_SECRET *** 💀\e[0m"
+  exit 1
+fi
+
+if [ -z "$TENANT_IDP_CLIENT_SECRET " ]; then
+  echo -e "\e[31m💀 ***Please paste TENANT_IDP_CLIENT_SECRET *** 💀\e[0m"
+  exit 1
+fi
+
 cd platform/apps
 
 if ! aws sts get-caller-identity >/dev/null 2>&1; then
@@ -46,6 +56,12 @@ export CDK_DEPLOY_ENV="dev"
 echo -e "\e[93;1m🚀 AUTHORIZATION MANAGEMENT DEPLOYMENT 🚀\e[0m"
 
 cd authorization-management
+./scripts/deploy.sh dev deploy
+cd ..
+
+echo -e "\e[93;1m🚀 API GATEWAY DEPLOYMENT 🚀\e[0m"
+
+cd unified-api-gateway
 ./scripts/deploy.sh dev deploy
 cd ..
 

@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 echo "Connection management deployment"
+set -e
 
 export CDK_DEPLOY_ENV='fds'
 export CDK_DEPLOY_REGION='ca-central-1'
@@ -45,35 +46,53 @@ if [ -z "$TENANT_IDP_CLIENT_SECRET " ]; then
   exit 1
 fi
 
-cd platform/apps
-
 if ! aws sts get-caller-identity >/dev/null 2>&1; then
   aws sso login --profile sh-cicd-global-iot-988262432034
 fi
 
-export CDK_DEPLOY_ENV="dev"
 
-echo -e "\e[93;1m🚀 AUTHORIZATION MANAGEMENT DEPLOYMENT 🚀\e[0m"
+echo -e "\e[1;93m"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║      🚀 AUTHORIZATION MANAGEMENT DEPLOYMENT 🚀   ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo -e "\e[0m"
 
-cd authorization-management
+cd platform/apps/
+
+sudo find . -maxdepth 1 -type d -name "scripts" -exec chmod +x {} \;
+
+cd authorization-management 
 ./scripts/deploy.sh dev deploy
 cd ..
 
-echo -e "\e[93;1m🚀 API GATEWAY DEPLOYMENT 🚀\e[0m"
+echo -e "\e[1;93m"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║         🚀 API GATEWAY DEPLOYMENT 🚀             ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo -e "\e[0m"
 
 cd unified-api-gateway
 ./scripts/deploy.sh dev deploy
 cd ..
 
-echo -e "\e[93;1m🚀 AUTHENTICATION MANAGER DEPLOYMENT 🚀\e[0m"
+echo -e "\e[1;93m"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║      🚀 AUTHENTICATION MANAGER DEPLOYMENT 🚀     ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo -e "\e[0m"
 
 cd authentication-management
 node ./scripts/proto-gen.cjs
-sh ./scripts/create-ssm-params.sh
-./scripts/deploy.sh dev deploy
+sh ./scripts/create-ssm-params.sh || true
+./scripts/deploy.sh dev deploy || true
 cd ..
 
-echo -e "\e[93;1m🚀 CONNECTION MANAGEMENT DEPLOYMENT 🚀\e[0m"
+echo -e "\e[1;93m"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║    🚀 CONNECTION MANAGEMENT DEPLOYMENT 🚀        ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo -e "\e[0m"
+
 
 cd connection-management
 ./scripts/deploy.sh data deploy

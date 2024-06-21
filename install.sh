@@ -8,15 +8,15 @@ update_master(){
   echo "✅ Update completed." 
 }
 
-read -p "Do you want to fetch the latest changes from the master branch? (Y/n) 🤔 " response
+# read -p "Do you want to fetch the latest changes from the master branch? (Y/n) 🤔 " response
 
-response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
+# response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
 
-if [[ "$response" == "y" || "$response" == "" ]]; then
-    update_master
-else
-    echo "🚫 Update canceled."
-fi
+# if [[ "$response" == "y" || "$response" == "" ]]; then
+#     update_master
+# else
+#     echo "🚫 Update canceled."
+# fi
 
 availableFiles=()
 

@@ -46,14 +46,14 @@ export CDK_DEPLOY_ENV="dev"
 echo -e "\e[93;1m🚀 AUTHORIZATION MANAGEMENT DEPLOYMENT 🚀\e[0m"
 
 cd authorization-management
-# ./scripts/deploy.sh dev deploy
+./scripts/deploy.sh dev deploy
 cd ..
 
 echo -e "\e[93;1m🚀 AUTHENTICATION MANAGER DEPLOYMENT 🚀\e[0m"
 
 cd authentication-management
 node ./scripts/proto-gen.cjs
-# sh ./scripts/create-ssm-params.sh
+sh ./scripts/create-ssm-params.sh
 ./scripts/deploy.sh dev deploy
 cd ..
 

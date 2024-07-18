@@ -1,2 +1,4 @@
 lib/common/parameters.*
 local_params.json
+node_modules
+package-lock.json

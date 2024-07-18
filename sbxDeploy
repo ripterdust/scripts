@@ -98,3 +98,9 @@ cd connection-management
 ./scripts/deploy.sh data deploy
 ./scripts/deploy.sh svc-a deploy
 ./scripts/deploy.sh api deploy
+
+echo -e "\e[1;92m"
+echo "╔══════════════════════════════════════════════════╗"
+echo "║        ✔️  Everything ran successfully  ✔️       ║"
+echo "╚══════════════════════════════════════════════════╝"
+echo -e "\e[0m"

@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+import { intro, outro, select, spinner, text } from "@clack/prompts";
+import * as fs from "fs";
+import { join } from "path";
+import { exec } from "child_process";
+
+const getProfiles = () => {
+  const configFile = join(process.env.HOME, ".aws/config");
+
+  return fs
+    .readFileSync(configFile, "utf8")
+    .split(/\r?\n/)
+    .filter((line) => {
+      if (line.includes("[profile")) {
+        return true;
+      }
+    })
+    .map((profile) => {
+      const profileName = profile.replace("[profile ", "").replace("]", "");
+
+      return {
+        value: profileName,
+        label: profileName,
+      };
+    });
+};
+
+const login = (profile, spinnerInstance) => {
+  return new Promise((resolve, reject) => {
+    const command = `aws sso login --profile ${profile}`;
+    const childProcess = exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(`Error executing command: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        reject(`Command stderr: ${stderr}`);
+        return;
+      }
+      resolve(stdout.trim());
+    });
+
+    childProcess.stdout.on("data", async (data) => {
+      console.log("🚀 ~ childProcess.stdout.on ~ data.toString().trim():", data.toString().trim());
+    });
+
+    childProcess.on("close", () => {
+      spinnerInstance.stop();
+      outro("Thanks for using the tool");
+    });
+  });
+};
+
+const main = async () => {
+  const profiles = getProfiles();
+
+  const spinnerInstance = spinner();
+  intro("Welcome to aws login tool");
+
+  spinnerInstance.start("Waiting for your selection");
+  const selectedProfile = await select({
+    message: "Which profile would you like to use?",
+    options: profiles,
+  });
+  spinnerInstance.stop();
+
+  spinnerInstance.start("Logging in to your AWS account");
+  await login(selectedProfile, spinnerInstance);
+};
+
+(async () => {
+  await main();
+})();

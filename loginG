@@ -1,4 +1,0 @@
-#!/bin/bash
-
-
-aws codeartifact login --tool npm --repository telus-iot-global --domain telus-sh-global --domain-owner 380625108321 --region us-east-1

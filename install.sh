@@ -1,11 +1,7 @@
 #!/bin/bash
 
 update_master(){
-  echo "🔄 Updating master branch..."
-  git fetch origin
-  git checkout main
-  git pull origin main
-  echo "✅ Update completed." 
+
 }
 
 # read -p "Do you want to fetch the latest changes from the master branch? (Y/n) 🤔 " response

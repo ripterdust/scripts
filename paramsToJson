@@ -28,7 +28,7 @@ const importFile = async () => {
   }
 };
 (async function () {
-  await bash("tsc ./lib/common/parameters.ts --outDir /tmp");
+  await bash("tsc ./lib/common/parameters.ts --outDir /tmp --skipLibCheck");
   const paramStore = await importFile();
   const parameters = JSON.stringify(paramStore, null, 2);
 

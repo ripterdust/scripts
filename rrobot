@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd ~/repos/sh2_integrations_sq8_qa/mobileTesting
-
-nodemon --exec python3 pipeline_execution.py qa -e py,robot

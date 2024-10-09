@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./start-local.sh FebeCICDPipeline/Dev/Service-febe-febe
